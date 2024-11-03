@@ -6,23 +6,106 @@
   <style>
   
   body{
-  
-  margin: 0;
-  padding: 0;
-  background-color: floralwhite ;
-}
-  video{
     
-   width: 100%;
-   
+    height: 800px;
+    padding: 0;
+    margin: 0;
+    
+    
   }
+ div{
+   
+   width: 100%;
+   height: 800px;
+   background-color: blue;
+   position: relative;
+   color: white;
+   overflow-x: hidden;
+ }
+ 
+ @keyframes largeDown{
+   
+   0%{
+     
+     font: 20px;
+     margin-top: 0;
+   }
+   
+   50%{
+     
+     font-size: 60px;
+     margin-top: 50%;
+   }
+   
+   100%{
+     
+     font-size: 20px;
+     margin-top: 160%;
+   }
+ }
+ 
+ .ilimint{
+   
+   animation: largeDown 4s ease-in-out 0s 1;
+   transition: all 0.3s ease-in-out;
+   position: absolute;
+ }
 
   </style>
   <title>Interactive Site</title>
+  
+  <script>
+    
+    function wordDown(){
+      
+      setInterval(()=>{
+        
+       let position = Math.round(Math.random()*90)+1;
+       
+       let index = Math.round(Math.random()*3);
+       
+       let names = ['John', 'Cian', 'Lemon', 'Lioc'];
+        
+      let container = document.querySelector('div');
+      
+      let newElem = document.createElement('h1');
+      
+      newElem.textContent = names[index];
+      
+      newElem.style.marginLeft = position + "%";
+      
+     newElem.classList.add('ilimint');
+     
+     
+     
+     container.appendChild(newElem);
+     
+     setTimeout(()=>{
+       
+       container.removeChild(newElem);
+     },4000);
+     
+        
+      },1000)
+      
+    }
+    
+    window.addEventListener('load', wordDown);
+    window.addEventListener('click', wordDown);
+    
+    window.addEventListener('contextmenu',(e)=>{
+      
+      alert('inspect is not allowed!');
+      
+      e.preventDefault;
+    });
+    
+  </script>
+  
 </head>
 <body>
   
-  <video src="lulu.mp4" controls muted></video>
-  
+  <div></div>
+
 </body>
 </html>
